@@ -1,0 +1,12 @@
+yarn create vite
+	> naam kies - lowercase en zonder spaties
+	> React
+	> Javascript
+cd [map]
+code .
+
+dependencies niet vergeten toevoegen!
+Terminal (ctrl shift ù)
+	> yarn
+	> yarn dev om de website te vinden
+node modules map uit de .gitignore smijten als je iets op chamilo wilt uploaden
