@@ -143,6 +143,16 @@ interface Profile {
   email: string;
   telefoon: string;
 }
+
+// FIXME: Voor de interface van het Profile zou je ook het volgende kunnen doen
+// Zodanig dat je de properties niet meer opnieuw hoeft te typen ;-)
+
+// interface Profile extends Persoon {
+//   email: string;
+//   telefoong: string;
+// }
+
+
 const volledigProfiel: Profile = { ...persoon, ...contact };
 //console.log(volledigProfiel);
 
@@ -151,6 +161,10 @@ const volledigProfiel: Profile = { ...persoon, ...contact };
 
 // TODO: Schrijf een functie berekenGemiddelde() die een onbekend aantal parameters accepteert met behulp van de rest-parameter en het gemiddelde van deze nummers retourneert.
 // Test dit uit op de nummers array van sectie 1 / oefening 2.
+
+// FIXME: Beter dat je de args ook zou typen bijvoorbeeld 
+//  const berekenGemiddelde = (...args: number[]) => {
+
 const berekenGemiddelde = (...args) => {
   if (Array.isArray(args[0])) {
     args = args[0];
@@ -167,6 +181,20 @@ const berekenGemiddelde = (...args) => {
 
 // TODO: Schrijf een functie verwerkData(data, callback) die een data-array en een callback-functie accepteert. De functie moet de callback toepassen op elk element in de data-array met behulp van de forEach() methode.
 // Voorbeeld van een callback functie: een functie die elk item vermenigvuldigt met 75.
+
+// FIXME: Ook hierbij beter je functie typen 
+
+// const verwerkData = (data: number[], callback: (element: number) => number): number[] => {
+
+// OFWEL
+
+// const verwerkData: (data: number[], callback: (element: number) => number) => number[] = (data, callback) => {
+
+// Natuurlijk kan je dit ook een in een aparate type steken zodanig dat je het volgende zou kunnen doen
+
+// type VerwerkDataFn = (data: number[], callback: (element: number) => number) => number[];
+// const verwerkData: VerwerkDataFn = (data, callback) => {
+
 const verwerkData = (data, callback) => {
   let tempArr = [];
   data.forEach((e) => {
@@ -258,6 +286,9 @@ const simuleerVerzending = (email: string) => {
       else reject(`Email is niet succesvol verzonden naar ${email}`);
     }, 3000);
   });
+
+  // FIXME: Hier zou ik gewoon de promise returnen zodanig dat je in de verzendmail functie kunt wachten op dit resultaat
+  // return promise;
   promise.then((e) => console.log(e)).catch((e) => console.log(e));
 };
 

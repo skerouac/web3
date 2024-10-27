@@ -18,6 +18,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
+        {/* Hier zou ik voor de count een andere naam kiezen die binnenkomt in de functie van de setter -> om verwarring tegen te gaan. */}
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
