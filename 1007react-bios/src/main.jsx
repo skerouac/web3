@@ -10,6 +10,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import RootLayout from "./pages/RootLayout.jsx";
+import NotFoundPage from "./pages/NotFoundPage.jsx";
+import FavoritesPage from "./pages/FavoritesPage.jsx";
 
 //ROUTER
 //STAP 1: Nieuwe browserrouter aanmaken (haal je startapp uit de createRoot en zet het hierin)
@@ -17,14 +19,29 @@ import RootLayout from "./pages/RootLayout.jsx";
 const browserRouter = createBrowserRouter([
   {
     element: <RootLayout />,
+    errorElement: <NotFoundPage />,
     children: [
       {
-        path: "/",
+        path: "",
         element: <MoviesPage />,
       },
       {
-        path: "/details/:id",
-        element: <DetailsPage />,
+        path: "details",
+        children: [
+          {
+            path: "test",
+            element: <App />,
+          },
+          {
+            //best practice: alle dynamische paden onderaan in hun scope
+            path: ":id",
+            element: <DetailsPage />,
+          },
+        ],
+      },
+      {
+        path: "favorites",
+        element: <FavoritesPage />,
       },
     ],
   },

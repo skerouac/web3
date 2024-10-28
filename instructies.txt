@@ -1,0 +1,16 @@
+START --------
+yarn create vite (naam: lowercase zonder spaties, React)
+yarn (dependencies toevoegen)
+yarn dev (link localhost te vinden)
+
+TAILWIND -----
+yarn add -D tailwindcss
+npx tailwindcss init
+content: ["./src/**/*.{js,jsx,ts,tsx}"],
+index.css 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ICONS --------
+yarn add react-icons
