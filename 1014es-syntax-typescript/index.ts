@@ -8,7 +8,7 @@ import { log } from "console";
 // Gegeven: Array van temperatruen in Celsius:
 const temperaturesInCelsius: number[] = [0, 15, 22, -5, 30];
 
-// TODO: Gebruik nu een methode om een nieuwe array te creëren met deze temperaturen omgezet naar Fahrenheit.
+// Gebruik nu een methode om een nieuwe array te creëren met deze temperaturen omgezet naar Fahrenheit.
 // Formule: Fahrenheit = Celcius * 9/5 + 32
 const temperaturesInFahrenheit: number[] = temperaturesInCelsius.map((e) => {
   return (e * 9) / 5 + 32;
@@ -19,7 +19,7 @@ const temperaturesInFahrenheit: number[] = temperaturesInCelsius.map((e) => {
 // Gegeven: Array van nummers:
 const nummers: number[] = [3, 6, 8, 10, 15, 20];
 
-// TODO: Gebruik nu een methode om een nieuwe array terug te geven waarin enkel nog maar even getallen in zitten.
+// Gebruik nu een methode om een nieuwe array terug te geven waarin enkel nog maar even getallen in zitten.
 const filteredNumbers = nummers.filter((number: number) => {
   return number % 2 === 0;
 });
@@ -66,7 +66,7 @@ const studenten: Student[] = [
   },
 ];
 
-// TODO: Gebruik nu een methode om alle leeftijden op te tellen van de studenten die geverifieerd zijn (dus enkel waarbij isGeverifieerd = true).
+// Gebruik nu een methode om alle leeftijden op te tellen van de studenten die geverifieerd zijn (dus enkel waarbij isGeverifieerd = true).
 const aggregateAgesOfVerifiedStudents = studenten
   .filter((e) => e.isGeverifieerd === true)
   .map((e) => e.leeftijd)
@@ -99,7 +99,7 @@ const student: Student2 = {
   },
 };
 
-// TODO: Gebruik destructuring om de volgende variabelen voornaam, achternaam en mobile (score) uit het object te halen.
+// Gebruik destructuring om de volgende variabelen voornaam, achternaam en mobile (score) uit het object te halen.
 const {
   voornaam,
   achternaam,
@@ -113,7 +113,7 @@ const {
 // Gegeven: De coördinaten array
 const coordinaten: number[] = [12.5, 45.3, 7.8, 4.25, 50.487];
 
-// TODO: Gebruik destructuring om de eerste twee variabelen toe te wijzen aan x en y, en de rest aan een array rest.
+// Gebruik destructuring om de eerste twee variabelen toe te wijzen aan x en y, en de rest aan een array rest.
 const [x, y, ...rest] = coordinaten;
 //console.log(x, y, rest);
 
@@ -149,9 +149,8 @@ interface Profile {
 
 // interface Profile extends Persoon {
 //   email: string;
-//   telefoong: string;
+//   telefoon: string;
 // }
-
 
 const volledigProfiel: Profile = { ...persoon, ...contact };
 //console.log(volledigProfiel);
@@ -159,13 +158,13 @@ const volledigProfiel: Profile = { ...persoon, ...contact };
 // Oefening 2:
 // Gegeven: /
 
-// TODO: Schrijf een functie berekenGemiddelde() die een onbekend aantal parameters accepteert met behulp van de rest-parameter en het gemiddelde van deze nummers retourneert.
+// Schrijf een functie berekenGemiddelde() die een onbekend aantal parameters accepteert met behulp van de rest-parameter en het gemiddelde van deze nummers retourneert.
 // Test dit uit op de nummers array van sectie 1 / oefening 2.
 
-// FIXME: Beter dat je de args ook zou typen bijvoorbeeld 
+// FIXME: Beter dat je de args ook zou typen bijvoorbeeld
 //  const berekenGemiddelde = (...args: number[]) => {
 
-const berekenGemiddelde = (...args) => {
+const berekenGemiddelde = (...args: number[]) => {
   if (Array.isArray(args[0])) {
     args = args[0];
   }
@@ -179,10 +178,10 @@ const berekenGemiddelde = (...args) => {
 // Oefening 1:
 // Gegeven: /
 
-// TODO: Schrijf een functie verwerkData(data, callback) die een data-array en een callback-functie accepteert. De functie moet de callback toepassen op elk element in de data-array met behulp van de forEach() methode.
+// Schrijf een functie verwerkData(data, callback) die een data-array en een callback-functie accepteert. De functie moet de callback toepassen op elk element in de data-array met behulp van de forEach() methode.
 // Voorbeeld van een callback functie: een functie die elk item vermenigvuldigt met 75.
 
-// FIXME: Ook hierbij beter je functie typen 
+// FIXME: Ook hierbij beter je functie typen
 
 // const verwerkData = (data: number[], callback: (element: number) => number): number[] => {
 
@@ -195,7 +194,10 @@ const berekenGemiddelde = (...args) => {
 // type VerwerkDataFn = (data: number[], callback: (element: number) => number) => number[];
 // const verwerkData: VerwerkDataFn = (data, callback) => {
 
-const verwerkData = (data, callback) => {
+const verwerkData = (
+  data: number[],
+  callback: (element: number) => number
+): number[] => {
   let tempArr = [];
   data.forEach((e) => {
     tempArr.push(callback(e));
@@ -236,7 +238,7 @@ const voorraad: string[] = [
   "prodY2Z4",
 ];
 
-// TODO: Schrijf een functie controleerVoorraad(productId) die een Promise retourneert.
+// Schrijf een functie controleerVoorraad(productId) die een Promise retourneert.
 // Als het product op voorraad is (gebruik de voorraad array om te checken of een gegeven productId in deze array zit met een array methode),
 // resolve de Promise met het bericht "Product is op voorraad".
 // Zo niet reject met "Product is niet op voorraad.".
@@ -254,7 +256,7 @@ const controleerVoorraad = (productId: string) => {
   return promise;
 };
 
-// TODO: Test nu uw functie met deze twee aanroepen.
+// Test nu uw functie met deze twee aanroepen.
 // controleerVoorraad("prodJ4K6");
 // controleerVoorraad("prodXGT8");
 
@@ -263,7 +265,7 @@ const controleerVoorraad = (productId: string) => {
 // Oefening 1:
 // Gegeven: /
 
-// TODO: Schrijf een async functie controleerVoorraadAsync die de controleerVoorraad functie gebruikt uit de vorige sectie maak gebruik van async en await.
+// Schrijf een async functie controleerVoorraadAsync die de controleerVoorraad functie gebruikt uit de vorige sectie maak gebruik van async en await.
 // Zorg ervoor dat je de Promise correct afhandelt en eventuele fouten opvangt met een try/catch block.
 const controleerVoorraadAsync = async (productId: string) => {
   try {
@@ -276,7 +278,7 @@ const controleerVoorraadAsync = async (productId: string) => {
 // Oefening 2:
 // Gegeven: /
 
-// TODO: Schrijf een functie simuleerVerzending(email) (PROMISE) die na 1 seconde een bericht retourneert dat de e-mail is verzonden naar het opgegeven emailadres.
+// Schrijf een functie simuleerVerzending(email) (PROMISE) die na 1 seconde een bericht retourneert dat de e-mail is verzonden naar het opgegeven emailadres.
 // Schrijf een async functie verzendEmail(email) gebruik await om te wachten op het resultaat van de simuleerVerzending(email) functie en log het bericht.
 const simuleerVerzending = (email: string) => {
   const promise: Promise<string> = new Promise((resolve, reject) => {
@@ -289,14 +291,17 @@ const simuleerVerzending = (email: string) => {
 
   // FIXME: Hier zou ik gewoon de promise returnen zodanig dat je in de verzendmail functie kunt wachten op dit resultaat
   // return promise;
-  promise.then((e) => console.log(e)).catch((e) => console.log(e));
+  return promise;
 };
 
 const verzendEmail = async (email: string) => {
   try {
-    await simuleerVerzending(email);
-  } catch {}
+    const promise = await simuleerVerzending(email);
+    console.log(promise);
+  } catch (e) {
+    console.log(e);
+  }
 };
 
-// TODO: Test de functie
+// Test de functie
 verzendEmail("voorbeeld@example.com");
