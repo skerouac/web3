@@ -12,6 +12,9 @@ import Footer from "./components/Footer.jsx";
 import RootLayout from "./pages/RootLayout.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import FavoritesPage from "./pages/FavoritesPage.jsx";
+import FavoritesContextProvider from "./contexts/FavoritesContext.jsx";
+import StarWarsPage from "./pages/StarWarsPage.jsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 //ROUTER
 //STAP 1: Nieuwe browserrouter aanmaken (haal je startapp uit de createRoot en zet het hierin)
@@ -43,16 +46,27 @@ const browserRouter = createBrowserRouter([
         path: "favorites",
         element: <FavoritesPage />,
       },
+      {
+        path: "starwars",
+        element: <StarWarsPage />,
+      },
     ],
   },
 ]);
 
+//const queryClient = new QueryClient();
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <DarkModeContextProvider>
-      <RouterProvider router={browserRouter} />
-      {/* <App /> */}
-      {/* <Movies /> */}
-    </DarkModeContextProvider>
+    {/* <QueryClientProvider client={queryClient}> */}
+    <QueryClientProvider client={new QueryClient()}>
+      <DarkModeContextProvider>
+        <FavoritesContextProvider>
+          <RouterProvider router={browserRouter} />
+        </FavoritesContextProvider>
+        {/* <App /> */}
+        {/* <Movies /> */}
+      </DarkModeContextProvider>
+    </QueryClientProvider>
   </StrictMode>
 );

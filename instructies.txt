@@ -1,6 +1,7 @@
 START --------------
 yarn create vite (naam: lowercase zonder spaties, React)
 yarn (dependencies toevoegen)
+----- Dit hierboven moet je maar 1x doen, erna is het in orde
 yarn dev (link localhost te vinden)
 
 TAILWIND -----------
@@ -17,3 +18,9 @@ yarn add react-router-dom
 
 ICONS --------------
 yarn add react-icons
+
+AXIOS --------------
+yarn add axios
+
+REACT-QUERY --------
+yarn add @tanstack/react-query

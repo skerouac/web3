@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineFavorite, MdOutlineFavoriteBorder } from "react-icons/md";
+import { useFavorites } from "../contexts/FavoritesContext";
 
 //Statische image importeren
 //import duneImg from "../assets/dune_poster.jpg";
@@ -10,7 +11,15 @@ const Movie = ({ movies }) => {
 
   const navigate = useNavigate();
 
-  const favorites = [];
+  const { favorites, toggleFavorite } = useFavorites();
+
+  const isInFavorite = (movie) => favorites.some((f) => f.id === movie.id);
+
+  // const checkFavorite = (movie) => {
+  //   if (favorites.find(movie)) {
+  //     return true;
+  //   } else return false;
+  // };
 
   return movies.map((m) => (
     // <div
@@ -24,13 +33,16 @@ const Movie = ({ movies }) => {
       onClick={() => navigate(`/details/${m.id}`)}
     >
       <button
-        className="absolute top-4 right-4 rounded-full p-2 text-2xl text-white bg-emerald-900"
-        onClick={() => {
-          favorites.push(m);
+        // className="absolute top-4 right-4 rounded-full p-2 text-2xl text-white bg-emerald-900"
+        className={`absolute top-4 right-4 rounded-full p-2 text-2xl text-white ${
+          isInFavorite(m) ? "bg-red-600" : "bg-emerald-900"
+        } `}
+        onClick={(event) => {
+          toggleFavorite(m);
           event.stopPropagation();
         }}
       >
-        <MdOutlineFavoriteBorder />
+        {isInFavorite(m) ? <MdOutlineFavorite /> : <MdOutlineFavoriteBorder />}
       </button>
       {/* <img src={duneImg} /> STATISCH */}
       <img src={new URL(`../assets/${m.poster_path}`, import.meta.url).href} />

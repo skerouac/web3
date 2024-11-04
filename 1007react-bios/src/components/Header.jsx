@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../assets/logo.png";
 import { Link, NavLink } from "react-router-dom";
 import { MdHome, MdFavorite } from "react-icons/md";
+import { FaJedi } from "react-icons/fa";
 
 const Header = () => {
   return (
@@ -37,6 +38,18 @@ const Header = () => {
           }
         >
           <MdFavorite />
+        </NavLink>
+        <NavLink
+          to="/starwars"
+          className={({ isActive }) =>
+            `${
+              isActive
+                ? "text-white underline underline-offset-4"
+                : "text-emerald-700"
+            }`
+          }
+        >
+          <FaJedi />
         </NavLink>
       </div>
     </div>
