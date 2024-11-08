@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { useParams } from "react-router-dom";
 import { IMovie } from "../components/Movies";
 import movies from "../utils/films.json";
 
-const DetailsPage = () => {
+const DetailsPage = (): ReactNode => {
   const { id } = useParams<{ id: string }>();
   let movie: IMovie | undefined;
 
