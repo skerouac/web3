@@ -24,3 +24,9 @@ yarn add axios
 
 REACT-QUERY --------
 yarn add @tanstack/react-query
+
+LEAFLET ------------
+yarn add leaflet react-leaflet
+
+FORMIK -------------
+yarn add formik yup
