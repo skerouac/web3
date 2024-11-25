@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, ReactNode } from "react";
 import { IMovie } from "./Movies";
 import React from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ interface MovieProps extends PropsWithChildren {
   movie: IMovie;
 }
 
-const Movie = ({ movie }: MovieProps) => {
+const Movie = ({ movie }: MovieProps): ReactNode => {
   const navigate: NavigateFunction = useNavigate();
   const { favorites, toggleFavorite } = useFavorites();
   const isInFavorite = (movie: IMovie): boolean =>

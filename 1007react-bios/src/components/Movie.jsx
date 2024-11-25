@@ -10,9 +10,7 @@ const Movie = ({ movies }) => {
   // Hook om te kunnen navigeren in code -> useNavigate();
 
   const navigate = useNavigate();
-
   const { favorites, toggleFavorite } = useFavorites();
-
   const isInFavorite = (movie) => favorites.some((f) => f.id === movie.id);
 
   // const checkFavorite = (movie) => {
