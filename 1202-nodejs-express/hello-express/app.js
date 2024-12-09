@@ -1,3 +1,8 @@
+//const dotenv = require("dotenv");
+//dotenv.config();
+//kan ook gewoon direct opgeroepen worden
+require("dotenv").config();
+
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");

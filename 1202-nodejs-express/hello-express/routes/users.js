@@ -1,10 +1,18 @@
 const express = require("express");
+const UsersController = require("../controllers/users_controller");
 const router = express.Router();
 
 /* GET users listing. "/users/"*/
-router.get("/", function (req, res, next) {
-  res.send("respond with a resource");
-});
+// router.get("/", function (req, res, next) {
+//   const message = process.env.MSG;
+//   //res.send("respond with a resource");
+//   res.send(message);
+// });
+router.get("/", UsersController.getAllUsers);
+router.get("/:id", UsersController.getUserById);
+router.post("/", UsersController.createUser);
+router.put("/:id", UsersController.updateUser);
+router.delete("/:id", UsersController.deleteUser);
 
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
