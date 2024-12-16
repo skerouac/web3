@@ -1,6 +1,8 @@
 const express = require("express");
 const UsersController = require("../controllers/users_controller");
 const router = express.Router();
+const UsersValidator = require("../validators/users_validator");
+const authMiddleware = require("../middleware/auth_middleware");
 
 /* GET users listing. "/users/"*/
 // router.get("/", function (req, res, next) {
@@ -9,30 +11,17 @@ const router = express.Router();
 //   res.send(message);
 // });
 router.get("/", UsersController.getAllUsers);
-router.get("/:id", UsersController.getUserById);
-router.post("/", UsersController.createUser);
-router.put("/:id", UsersController.updateUser);
-router.delete("/:id", UsersController.deleteUser);
+router.get("/verify", authMiddleware, UsersController.verify);
+router.get("/:id", UsersValidator.idValidator, UsersController.getUserById);
+router.post("/", UsersValidator.createValidator, UsersController.createUser);
+router.patch(
+  "/:id",
+  [...UsersValidator.idValidator, UsersValidator.updateValidator],
+  UsersController.updateUser
+);
+router.delete("/:id", UsersValidator.idValidator, UsersController.deleteUser);
 
-router.post("/login", (req, res) => {
-  const { email, password } = req.body;
-
-  //DB call => bestaat user? geldig wachtwoord?
-  const isLoggedIn = true;
-  if (isLoggedIn) {
-    return res.send({ id: 11, email });
-  }
-
-  //200 - OK
-  //201 - Created (bij POST)
-  //204 - No Content
-  //400 - Bad Request
-  //401 - Unauthorized -> niet ingelogd
-  //403 - Forbidden -> ingelogd maar niet de juiste permissies
-  //404 - Not Found
-  //500 - Internal Server Error
-  res.sendStatus(401);
-});
+router.post("/login", UsersController.login);
 
 module.exports = router;
 
